@@ -30,20 +30,13 @@ RUN apt-get update && apt-get install -y \
     libu2f-udev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Google Chrome
-RUN wget -O google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+# Install specific Chrome version (127)
+RUN wget -O google-chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_127.0.6533.61-1_amd64.deb && \
     apt-get update && apt-get install -y ./google-chrome.deb && \
     rm google-chrome.deb
 
-# Install ChromeDriver matching installed Chrome
-RUN CHROME_VERSION=$(google-chrome --version | awk '{ print $3 }' || echo "default") && \
-    MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d '.' -f 1 || echo "default") && \
-    CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${MAJOR_VERSION}") && \
-    if [ -z "$CHROMEDRIVER_VERSION" ]; then \
-      CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE); \
-    fi && \
-    echo "Installing ChromeDriver version $CHROMEDRIVER_VERSION" && \
-    wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" && \
+# Install ChromeDriver 127
+RUN wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/127.0.6533.61/chromedriver_linux64.zip" && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
     chmod +x /usr/local/bin/chromedriver && \
     rm /tmp/chromedriver.zip
