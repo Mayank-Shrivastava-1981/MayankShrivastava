@@ -104,7 +104,9 @@ def extract_xpaths():
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
-        driver = webdriver.Chrome(options=chrome_options)
+        service = Service("/usr/local/bin/chromedriver")
+
+        driver = webdriver.Chrome(service=service, options=chrome_options)
        
         if url:
             driver.get(url)
