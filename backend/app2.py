@@ -91,14 +91,21 @@ def extract_xpaths():
         url = None
 
     try:
-        options = Options()
-        options.add_argument('--headless')
-        options.add_argument('--disable-gpu')
-        options.add_argument('--no-sandbox')
-        options.binary_location = "/usr/bin/google-chrome"
-        service = Service(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service, options=options)
+        # options = Options()
+        # options.add_argument('--headless')
+        # options.add_argument('--disable-gpu')
+        # options.add_argument('--no-sandbox')
+        # options.binary_location = "/usr/bin/google-chrome"
+        # service = Service(ChromeDriverManager().install())
+        # driver = webdriver.Chrome(service=service, options=options)
+        chrome_options = Options()
+        chrome_options.binary_location = "/usr/bin/google-chrome"
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
 
+        driver = webdriver.Chrome(options=chrome_options)
+       
         if url:
             driver.get(url)
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))

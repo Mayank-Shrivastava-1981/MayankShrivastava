@@ -1,11 +1,14 @@
 services:
   - type: web
-    name: your-service
+    name: smartautogenai
     env: python
     buildCommand: |
-      apt-get update
-      apt-get install -y wget
-      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      apt install -y ./google-chrome-stable_current_amd64.deb
+      apt-get update && \
+      apt-get install -y wget unzip && \
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+      apt install -y ./google-chrome-stable_current_amd64.deb && \
       pip install -r requirements.txt
-    startCommand: python backend/app2.py
+    startCommand: gunicorn app2:app
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "TRUE"
