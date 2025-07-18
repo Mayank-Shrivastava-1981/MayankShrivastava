@@ -114,6 +114,9 @@ def extract_xpaths():
         return jsonify({'xpaths': xpath_util.xpath_collection})
 
     except Exception as e:
+        import traceback
+        print("Error in /extract-xpaths:", e)
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
