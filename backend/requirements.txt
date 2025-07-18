@@ -1,2 +1,9 @@
+Flask
+flask-cors
 selenium
 webdriver-manager
+beautifulsoup4
+langchain
+openai
+python-dotenv
+requests
