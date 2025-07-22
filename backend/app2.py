@@ -15,7 +15,7 @@ CORS(app)
 
 class Xpath_Util:
     def __init__(self):
-        self.guessable_elements = ['input', 'button', 'select', 'textarea', 'a', 'label', 'img', 'div','span','table','th', 'tr', 'td','tbody']
+        self.guessable_elements = ['input', 'button', 'select', 'textarea', 'a', 'label', 'img', 'div','span','table','th', 'tr', 'td','tbody','form']
         self.known_attribute_list = ['id', 'name', 'placeholder', 'value', 'title', 'type', 'class', 'aria-label', 'data-testid']
         self.variable_names = []
         self.button_text_lists = []
