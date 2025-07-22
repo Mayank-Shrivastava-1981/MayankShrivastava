@@ -90,12 +90,12 @@ function App() {
               Data: "${testData}"
               Start URL: "${url}"
 
-              Use only these elements relevant to the Test case:
-              "${JSON.stringify(xpaths)}"
+              Use only these elements relevant to the Test case "${testCase}":
+              "${JSON.stringify(xpaths)}" or "${xpaths}" 
 
             Selector rules:
-            - Prefer: By.name, By.id, or CSS selectors
-            - Use XPath only if no other option is available
+            - Prefer: By.id, By.name, By.xpath,By.tag_name,By.link_text,By.partial_link_text,
+            - Use CSS selectors only if no other option is available
 
             STRICT OUTPUT INSTRUCTION: 
             Return only valid ${selectedLanguage} code with necessary imports. Do NOT include markdown, explanations, comments, or extra formatting.`
