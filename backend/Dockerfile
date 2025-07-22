@@ -50,7 +50,7 @@ COPY . .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Expose Flask/Gunicorn port
-EXPOSE 5000
+EXPOSE 8000
 
 # Run app
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app2:app"]
+CMD ["gunicorn", "--timeout", "120", "--bind", "0.0.0.0:5000", "app2:app"]
