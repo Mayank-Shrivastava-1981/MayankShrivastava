@@ -53,4 +53,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 EXPOSE 5000
 
 # Run app
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app2:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app2:app"]
