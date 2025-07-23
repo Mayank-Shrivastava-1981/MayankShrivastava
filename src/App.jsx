@@ -91,7 +91,7 @@ function App() {
               Start URL: "${url}"
 
               Use only these elements relevant to the Test case "${testCase}":
-              "${JSON.stringify(xpaths)}" or "${xpaths}" 
+              "${JSON.stringify(xpaths)}"
 
             Selector rules:
             - Prefer: By.id, By.name, By.xpath,By.tag_name,By.link_text,By.partial_link_text,
